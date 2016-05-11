@@ -38,4 +38,5 @@ do
  
 	cat "$INPUTFOLDER"/"$base"_R2.paired.fastq.gz > all_reads.left.fastq.gz
 
+
 done  2>&1 | tee 98_log_files/"$TIMESTAMP"_mere.log        
