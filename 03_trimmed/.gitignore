@@ -1,0 +1,8 @@
+*~
+*.txt
+*.fastq.gz
+*.fq.gz
+*paired*
+*single*
+*.gz
+*.zip

@@ -1,0 +1,11 @@
+*~
+*.txt
+*.fastq.gz
+*.fq.gz
+*paired*
+*single*
+*.gz
+TRIM*
+MAP*
+HT*
+GSNAP*
