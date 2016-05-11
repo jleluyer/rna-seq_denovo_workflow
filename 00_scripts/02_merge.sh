@@ -34,8 +34,8 @@ do
 	base=$(basename "$file")
 
 
-	cat "$INPUTEFOLDER"/"$base"_R1.paired.fastq.gz > all_reads.left.fastq.gz
+	cat "$INPUTFOLDER"/"$base"_R1.paired.fastq.gz > all_reads.left.fastq.gz
  
-	cat "$INPUTEFOLDER"/"$base"_R2.paired.fastq.gz > all_reads.left.fastq.gz
+	cat "$INPUTFOLDER"/"$base"_R2.paired.fastq.gz > all_reads.left.fastq.gz
 
 done  2>&1 | tee 98_log_files/"$TIMESTAMP"_mere.log        
