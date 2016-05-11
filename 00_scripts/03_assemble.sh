@@ -22,7 +22,7 @@ module load apps/trinityrnaseq/2.1.1
 
 #Global variables
 READSLEFT="03_merged/*left.fastq.gz"
-READRIGHT="03_merged/*right.fastq.gz"
+READSRIGHT="03_merged/*right.fastq.gz"
 PWD="__PWD__"
 
 cd $PWD
