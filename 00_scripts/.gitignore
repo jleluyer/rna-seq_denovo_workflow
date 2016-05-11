@@ -2,3 +2,4 @@
 *.txt
 *.fastq.gz
 *.gz
+trinity_utils
