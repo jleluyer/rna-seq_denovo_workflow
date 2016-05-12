@@ -21,11 +21,11 @@ module load apps/trinityrnaseq/2.1.1
 
 
 #Global variables
-READSLEFT="03_merged/*left.fastq.gz"
-READSRIGHT="03_merged/*right.fastq.gz"
-PWD="__PWD__"
+READSLEFT="03_merged/*left.fq.gz"
+READSRIGHT="03_merged/*right.fq.gz"
 
-cd $PWD
+#move to present directory
+cd $PBS_O_WORKDIR
 
 #Trinity variables
 ##Required

@@ -20,11 +20,11 @@ module load compilers/gcc/4.8
 module load apps/mugqic_pipeline/2.1.1
 
 #Global variables
-PWD="__PWD__"
 TRANSCRIPTOME="05_trinity_assembly/Trinity.fasta"
 INFOFILE=""
-cd $PWD
 
+# Move to job submission directory
+cd $PBS_O_WORKDIR
 
 #  Required:
 

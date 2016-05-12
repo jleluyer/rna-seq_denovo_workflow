@@ -22,10 +22,11 @@ module load apps/mugqic_pipeline/2.1.1
 module load mugqic/java/jdk1.7.0_60
 module load mugqic/trimmomatic/0.35
 
+#Global variables
 ADAPTERFILE="/path/to/file.fasta"
-PWD="__PWD__"
 
-cd $PWD
+# Move to job submission directory
+cd $PBS_O_WORKDIR
 
 base=__BASE__
 

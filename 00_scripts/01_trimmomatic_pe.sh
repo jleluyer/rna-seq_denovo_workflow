@@ -22,10 +22,12 @@ module load apps/mugqic_pipeline/2.1.1
 module load mugqic/java/jdk1.7.0_60
 module load mugqic/trimmomatic/0.35
 
+#gloe variables
 ADAPTERFILE="/rap/userID/00_ressources/02_databases/univec/univec.fasta"
-PWD="__PWD__"
 
-cd $PWD
+# Move to job submission directory
+cd $PBS_O_WORKDIR
+
 
 base=__BASE__
 

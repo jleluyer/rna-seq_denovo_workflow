@@ -26,8 +26,8 @@ module load mugqic/trimmomatic/0.35
 INPUTFOLDER="03_trimmed"
 OUTPUTFOLDER="04_merged"
 
-
-cd $(pwd)
+#move to present directory
+cd $PBS_O_WORKDIR
 
 for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
 do
