@@ -1,9 +1,12 @@
 #!/bin/bash
-
-#pre-requis
-module load apps/git/1.8.5.3 
-module load apps/trinityrnaseq/2.1.1
-
+#$ -N aboudance_stats
+#$ -M userID
+#$ -m beas
+#$ -pe smp 8
+#$ -l h_vmem=60G
+#$ -l h_rt=20:00:00
+#$ -cwd
+#$ -S /bin/bash
 
 #Move to job submission directory
 cd $PBS_O_WORKDIR
