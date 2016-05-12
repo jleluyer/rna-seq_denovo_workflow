@@ -22,8 +22,9 @@ TRIMMOMATIC_JAR="/prg/trimmomatic/0.36/trimmomatic-0.36.jar"
 # Move to job submission directory
 cd $PBS_O_WORKDIR
 
-
-base=__BASE__
+for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
+do
+        base=$(basename "$file")
 
 java -Xmx40G -jar $TRIMMOMATIC_JAR SE \
         -phred33 \
@@ -33,4 +34,6 @@ java -Xmx40G -jar $TRIMMOMATIC_JAR SE \
         LEADING:20 \
         TRAILING:20 \
         SLIDINGWINDOW:30:30 \
-        MINLEN:60 2>&1 | tee 98_log_files/"$TIMESTAMP"_trimmomatic_"$base".log
+        MINLEN:60 
+
+done 2>&1 | tee 98_log_files/"$TIMESTAMP"_trimmomatic_se.log 
