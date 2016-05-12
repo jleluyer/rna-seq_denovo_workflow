@@ -12,6 +12,12 @@ Grabherr MG, Haas BJ, Yassour M, Levin JZ, Thompson DA, Amit I, Adiconis X, Fan 
 
 Haas BJ, Papanicolaou A, Yassour M, Grabherr M, Blood PD, Bowden J, Couger MB, Eccles D, Li B, Lieber M, Macmanes MD, Ott M, Orvis J, Pochet N, Strozzi F, Weeks N, Westerman R, William T, Dewey CN, Henschel R, Leduc RD, Friedman N, Regev A. (2013). De novo transcript sequence reconstruction from RNA-Seq: reference generation and analysis with Trinity. **_Nat. Protoc._** [doi:  10.1038/nprot.2013.084](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3875132/)
 
-## Trinity repository
+## Dependencies
 
 [Trinity](https://github.com/trinityrnaseq/trinityrnaseq)
+
+[RSEM](https://github.com/deweylab/RSEM)
+
+[Bowtie](http://bowtie-bio.sourceforge.net/index.shtml)
+
+java 1.7 or higher

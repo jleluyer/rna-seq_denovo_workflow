@@ -1,13 +1,12 @@
 #!/bin/bash
-#PBS -A userID
-#PBS -N trimmomatic__BASE__
-#PBS -o trimmomatic__BASE__.out
-#PBS -e trimmomatic__BASE__.err
-#PBS -l walltime=02:00:00
-#PBS -M userEmail
-#PBS -m ea 
-#PBS -l nodes=1:ppn=8
-#PBS -r n
+#$ -N assembly
+#$ -M userID
+#$ -m beas
+#$ -pe smp 2
+#$ -l h_vmem=20G
+#$ -l h_rt=20:00:00
+#$ -cwd
+#$ -S /bin/bash
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
@@ -17,12 +16,11 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 #pre-requis
 
-module load apps/trinityrnaseq/2.1.1
 
 
 #Global variables
-READSLEFT="03_merged/*left.fq.gz"
-READSRIGHT="03_merged/*right.fq.gz"
+READSLEFT="04_merged/*left.fq.gz"
+READSRIGHT="04_merged/*right.fq.gz"
 
 #move to present directory
 cd $PBS_O_WORKDIR
@@ -51,7 +49,7 @@ right="--right $READSRIGHT"    		#right reads, one or more file names (separated
                                    		#if single: F or R.   (dUTP method = RF)
                                    		#See web documentation.
 
-cpu="--CPU 8" 	                    		#number of CPUs to use, default: 2
+cpu="--CPU 2" 	                    		#number of CPUs to use, default: 2
 mincontiglength="--min_contig_length 200" 	#minimum assembled contig length to report
                                    		#(def=200)
 
@@ -88,7 +86,7 @@ output="--output 05_trinity_assembly/"              	#name of directory for outp
 
 
 
-Trinity $seqtype $mem $left $right $single \
+00_scripts/trinity_utils/Trinity $seqtype $mem $left $right $single \
 	$strand $cpu $mincontiglength $corlongread \
 	$genomeguided $jaccard $normalize $notphase2 \
 	$output $cleanup 2>&1 | tee 98_log_files/"$TIMESTAMP"_trinityassembly.log

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#pre-requis
-module load apps/git/1.8.5.3 
-module load apps/trinityrnaseq/2.1.1
 
 cd $(pwd)
 

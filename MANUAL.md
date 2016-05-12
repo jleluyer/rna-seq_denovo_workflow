@@ -1,5 +1,13 @@
-#Pipeline for RNA-seq analysis in de novo
+# Pipeline for RNA-seq analysis in de novo
 
-##Documentation
+## Documentation
 
-##CItations
+### Notes
+
+After 00_import_trinity.sh do: 
+
+cd 00_scripts/trinity_utils
+make
+make plugins
+
+## Citations
