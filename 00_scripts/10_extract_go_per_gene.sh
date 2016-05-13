@@ -14,13 +14,10 @@ cd $PBS_O_WORKDIR
 
 #Global variable
 TRINOTATE_FILE="01_info_files/trinotate.xls"
-SAMPLE_REPLICATE="01_info_files/sample_replicates.txt"
 
-#######################################################################
-#
-#
-#  Required:
-#
+#Trinity global
+# Required:
+
 trinotate_file="--Trinotate_xls $TRINOTATE_FILE"     # Trinotate.xls file.
 
 gene_mode="--gene"
