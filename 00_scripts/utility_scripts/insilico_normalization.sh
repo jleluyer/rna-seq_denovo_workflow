@@ -9,7 +9,7 @@
 #$ -S /bin/bash
 
 #Move to job submission directory
-cd $PBS_O_WORKDIR
+cd $SGE_O_WORKDIR
 
 #Global variables
 READSLEFT="04_merged/*.left.fastq.gz"
