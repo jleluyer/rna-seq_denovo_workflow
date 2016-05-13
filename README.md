@@ -37,3 +37,17 @@ Haas BJ, Papanicolaou A, Yassour M, Grabherr M, Blood PD, Bowden J, Couger MB, E
 [limma/voom](http://bioconductor.org/packages/release/bioc/html/limma.html)
 
 [ROTS](http://www.btk.fi/research/research-groups/elo/software/rots/)
+
+[goseq](http://www.bioconductor.org/packages/release/bioc/html/goseq.html)
+
+```R
+source("http://bioconductor.org/biocLite.R")
+biocLite('edgeR')
+biocLite('limma')
+biocLite('DESeq2')
+biocLite('ctc')
+biocLite('Biobase')
+bioclite("goseq")
+install.packages('gplots')
+install.packages('ape')
+```
