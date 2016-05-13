@@ -9,7 +9,7 @@
 #$ -S /bin/bash
 
 #Move to job submission directory
-cd $PBS_O_WORKDIR
+cd $SGE_O_WORKDIR
 
 
 for file in $(ls 03_trimmed/*.paired.f*q.gz|perl -pe 's/_R[12].fastq.gz//')
