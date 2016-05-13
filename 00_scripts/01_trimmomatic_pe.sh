@@ -19,7 +19,7 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 ADAPTERFILE="/rap/userID/00_ressources/02_databases/univec/univec.fasta"
 TRIMMOMATIC_JAR="/prg/trimmomatic/0.36/trimmomatic-0.36.jar"
 # Move to job submission directory
-cd $PBS_O_WORKDIR
+cd $SGE_O_WORKDIR
 
 for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
 do
