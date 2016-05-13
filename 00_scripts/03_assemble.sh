@@ -24,7 +24,7 @@ READSRIGHT="04_merged/*right.fastq.gz"
 READSSINGLE="03_trimmed/*.trimmed.fastq.gz"
 
 #move to present directory
-cd $PBS_O_WORKDIR
+cd $SGE_O_WORKDIR
 
 #Trinity variables
 ##Required
