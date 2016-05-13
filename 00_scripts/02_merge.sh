@@ -5,7 +5,7 @@ OUTPUTFOLDER="04_merged"
 
 #move to present directory
 
-cd $(owd)
+cd $(pwd)
 
 for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
 do
