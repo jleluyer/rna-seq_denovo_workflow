@@ -2,7 +2,7 @@
 #$ -N de_analysis
 #$ -M userID
 #$ -m beas
-#$ -pe smp 8
+#$ -pe smp 1
 #$ -l h_vmem=60G
 #$ -l h_rt=20:00:00
 #$ -cwd
