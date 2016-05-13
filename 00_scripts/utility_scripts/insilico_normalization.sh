@@ -27,7 +27,6 @@ right="--right $READSRIGHT"
 #single="--single $READSSINGLE"
 
 seq="--seqType fq"           			#fa | fq    (fastA or fastQ format)
-aligner="--aligner bowtie"           		#bowtie, bowtie2
 
 mem="--JM 90G" 					#:(Jellyfish Memory) number of GB of system memory to use for 
                             			#k-mer counting by jellyfish  (eg. 10G) *include the 'G' char
