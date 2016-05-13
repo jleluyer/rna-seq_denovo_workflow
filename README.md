@@ -16,16 +16,24 @@ Haas BJ, Papanicolaou A, Yassour M, Grabherr M, Blood PD, Bowden J, Couger MB, E
 
 ### Softwares
 
-⋅⋅* [Trinity](https://github.com/trinityrnaseq/trinityrnaseq)
-⋅⋅* [Trinotate](https://github.com/Trinotate/Trinotate)
-⋅⋅* [RSEM](https://github.com/deweylab/RSEM)
-⋅⋅* [Bowtie](http://bowtie-bio.sourceforge.net/index.shtml)
-⋅⋅* **java 1.7** or higher
-⋅⋅* [R](https://www.r-project.org/)
+[Trinity](https://github.com/trinityrnaseq/trinityrnaseq)
+
+[Trinotate](https://github.com/Trinotate/Trinotate)
+
+[RSEM](https://github.com/deweylab/RSEM)
+
+[Bowtie](http://bowtie-bio.sourceforge.net/index.shtml)
+
+**java 1.7** or higher
+
+[R](https://www.r-project.org/)
 
 ### R packages
 
-⋅⋅* [edgeR](http://bioconductor.org/packages/release/bioc/html/edgeR.html)
-⋅⋅* [DESeq2](http://bioconductor.org/packages/release/bioc/html/DESeq2.html)
-⋅⋅* [limma/voom](http://bioconductor.org/packages/release/bioc/html/limma.html)
-⋅⋅* [ROTS](http://www.btk.fi/research/research-groups/elo/software/rots/)
+[edgeR](http://bioconductor.org/packages/release/bioc/html/edgeR.html)
+
+[DESeq2](http://bioconductor.org/packages/release/bioc/html/DESeq2.html)
+
+[limma/voom](http://bioconductor.org/packages/release/bioc/html/limma.html)
+
+[ROTS](http://www.btk.fi/research/research-groups/elo/software/rots/)
