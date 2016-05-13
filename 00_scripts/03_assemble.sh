@@ -14,10 +14,6 @@ NAME=$(basename $0)
 LOG_FOLDER="98_log_files"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
-#pre-requis
-
-
-
 #Global variables
 READSLEFT="04_merged/*left.fastq.gz"
 READSRIGHT="04_merged/*right.fastq.gz"
