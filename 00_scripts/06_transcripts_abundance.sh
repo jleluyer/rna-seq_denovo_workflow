@@ -18,9 +18,9 @@ do
 	sample=$(basename "$file")
 
 #Global variables
-TRANSCRIPTOME="05_assembly/Trinity.fasta"
-READSLEFT="04_merged/"$sample"_R1.paired.fastq.gz"
-READSRIGHT="04_merged/"$sample"_R2.paired.fastq.gz"
+TRANSCRIPTOME="05_trinity_assembly/Trinity.fasta"
+READSLEFT="03_trimmed/"$sample"_R1.paired.fastq.gz"
+READSRIGHT="03_trimmed/"$sample"_R2.paired.fastq.gz"
 #READSSINGLE="03_trimmed/*_R1.trimmed.fastq.gz"
 
 #########################################################################
@@ -38,7 +38,7 @@ right="--right $READSRIGHT"
 meth="--est_method RSEM"         			#abundance estimation method.
                                         		#alignment_based:  RSEM|eXpress       
                                         		#alignment_free: kallisto|salmon
-output="--output_dir 06_assembly_stats"            	#write all files to output directory
+output="--output_dir 07_de_results"            	#write all files to output directory
 
 #  if alignment_based est_method:
 alnmeth="--aln_method bowtie"           			#bowtie|bowtie2|(path to bam file) alignment method.  (note: RSEM requires bowtie)
@@ -91,6 +91,6 @@ coord="--coordsort_bam"                  		#provide coord-sorted bam in addition
 	$meth $output $trinmode \
 	$alnmeth $strand $cpu $outpref \
 	$maxins $coord $bowtie_rsem $bowtie2_rsem \
-	$include_rsem_bam $rsem_opt 2>&1 | tee 98_log_files/"$TIMESTAMP"_align.log
+	$include_rsem_bam $rsem_opt
 done 2>&1 | tee 98_log_files/"$TIMESTAMP"_align.log
 #note: Not all the commands have been integrated to data	

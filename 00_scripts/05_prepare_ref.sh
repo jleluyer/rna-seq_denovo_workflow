@@ -13,7 +13,7 @@ cd $PBS_O_WORKDIR
 
 
 #Global variables
-TRANSCRIPTOME="05_assembly/Trinity.fasta"
+TRANSCRIPTOME="05_trinity_assembly/Trinity.fasta"
 
 #########################################################################
 #Required

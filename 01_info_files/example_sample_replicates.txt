@@ -1,0 +1,4 @@
+cond_A    cond_A_rep1
+cond_A    cond_A_rep2
+cond_B    cond_B_rep1
+cond_B    cond_B_rep2
