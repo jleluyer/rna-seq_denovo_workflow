@@ -2,7 +2,7 @@
 #$ -N assembly
 #$ -M userID
 #$ -m beas
-#$ -pe smp 2
+#$ -pe smp 4
 #$ -l h_vmem=200G
 #$ -l h_rt=20:00:00
 #$ -cwd
@@ -19,9 +19,9 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 
 #Global variables
-READSLEFT="04_merged/*left.fq.gz"
-READSRIGHT="04_merged/*right.fq.gz"
-READSSINGLE="03_trimmed/*.fq.gz"
+READSLEFT="04_merged/*left.fastq.gz"
+READSRIGHT="04_merged/*right.fastq.gz"
+READSSINGLE="03_trimmed/*.trimmed.fastq.gz"
 
 #move to present directory
 cd $PBS_O_WORKDIR
@@ -43,7 +43,7 @@ right="--right $READSRIGHT"    		#right reads, one or more file names (separated
                                   		# if paired: RF or FR,
                                    		#if single: F or R.   (dUTP method = RF)
                                    		#See web documentation.
-cpu="--CPU 2" 	                    		#number of CPUs to use, default: 2
+cpu="--CPU 4" 	                    		#number of CPUs to use, default: 2
 mincontiglength="--min_contig_length 200" 	#minimum assembled contig length to report
                                    		#(def=200)
 #corlongread="--long_reads <string>"	        #fasta file containing error-corrected or circular consensus (CCS) pac bio reads
