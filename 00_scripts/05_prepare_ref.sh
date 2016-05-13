@@ -1,5 +1,5 @@
 #!/bin/bash
-#$ -N aboudance_stats
+#$ -N prep_ref
 #$ -M userID
 #$ -m beas
 #$ -pe smp 8
@@ -11,11 +11,9 @@
 #Move to job submission directory
 cd $PBS_O_WORKDIR
 
+
 #Global variables
 TRANSCRIPTOME="05_assembly/Trinity.fasta"
-READSLEFT="04_merged/*left.fq.gz"
-READSRIGHT="04_merged/*right.fq.gz"
-READSSINGLE="03_trimmed/*fq.gz"
 
 #########################################################################
 #Required
@@ -23,11 +21,6 @@ READSSINGLE="03_trimmed/*fq.gz"
 trans="--transcripts $TRANSCRIPTOME"           		#transcript fasta file
 seq="--seqType fq"	               			#fq|fa
 
-#  If Paired-end:
-left="--left $READSLEFT"
-right="--right $READSRIGHT"
-
-#  or Single-end:
 #single="--single $READSSINGLE"
 meth="--est_method RSEM"         			#abundance estimation method.
                                         		#alignment_based:  RSEM|eXpress       
@@ -37,8 +30,6 @@ output="--output_dir 06_assembly_stats"            	#write all files to output d
 #  if alignment_based est_method:
 alnmeth="--aln_method bowtie"           			#bowtie|bowtie2|(path to bam file) alignment method.  (note: RSEM requires bowtie)
                                        			#(if you already have a bam file, you can use it here instead of rerunning bowtie)
-# Optional:
-#strand="--SS_lib_type <string>"          		#strand-specific library type:  paired('RF' or 'FR'), single('F' or 'R').
                                          		#(note, no strand-specific mode for kallisto)
 cpu="--thread_count 8"                  		#number of threads to use (default = 4)
 #debug="--debug" 	          	             	#retain intermediate files
@@ -83,13 +74,5 @@ coord="--coordsort_bam"                  		#provide coord-sorted bam in addition
 #run reference preparation
 00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode \ 
 	$prepref $outpref 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
-
-#Align
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $seq $single $left $right \
-	$meth $output $trinmode \
-	$alnmeth $strand $cpu \
-	$maxins $coord $bowtie_rsem $bowtie2_rsem \
-	$include_rsem_bam $rsem_opt 2>&1 | tee 98_log_files/"$TIMESTAMP"_align.log
-
 
 #note: Not all the commands have been integrated to data	
