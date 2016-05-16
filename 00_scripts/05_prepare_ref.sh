@@ -8,6 +8,12 @@
 #$ -cwd
 #$ -S /bin/bash
 
+TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
+SCRIPT=$0
+NAME=$(basename $0)
+LOG_FOLDER="98_log_files"
+cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
+
 #Move to job submission directory
 cd $SGE_O_WORKDIR
 
