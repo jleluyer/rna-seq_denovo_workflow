@@ -1,4 +1,18 @@
- 
+ #!/bin/bash
+#$ -N matrix
+#$ -M userID
+#$ -m beas
+#$ -pe smp 8
+#$ -l h_vmem=20G
+#$ -l h_rt=20:00:00
+#$ -cwd
+#$ -S /bin/bash
+
+TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
+SCRIPT=$0
+NAME=$(basename $0)
+LOG_FOLDER="98_log_files"
+cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 
 #Required:
@@ -12,4 +26,6 @@ base_dir="--basedir_index -2"           #default(-2)
 out_pref="--out_prefix matrix"          #default: 'matrix'
 
 #run estimate to matrix
-00_scripts/trinity_utils/util/abundance_estimates_to_matrix.pl $meth $norm $name_dir $base_dir $out_pref sample1.results sample2.results ...
+00_scripts/trinity_utils/util/abundance_estimates_to_matrix.pl $meth $norm $name_dir \
+         $base_dir $out_pref \
+         sample1.results sample2.results ... 
