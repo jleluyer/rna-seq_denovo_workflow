@@ -24,7 +24,7 @@ make plugins
 cd ../..
 ```
 
-Make sure path to **Bowtie** is in your **$PATH**.
+Make sure **Bowtie** is in your **$PATH**.
 
 ### 3. Import data
 
@@ -33,6 +33,15 @@ cp /path/to/the/data/repository/*.gz 02_data
 ```
 
 ### 4. Trimming the data
+
+* Import univec.fasta
+
+```
+wget 01_info_files/univec.fasta ftp://ftp.ncbi.nlm.nih.gov/pub/UniVec/UniVec
+```
+Add your specific adaptors if absent in the database.
+
+* Trimming
 
 Two scripts are provided for **Single-End** or **Paired-end** data, **00_scripts/01_trimmomatic_se.sh** and **00_scripts/01_trimmomatic_pe.sh**, respectively.
 
@@ -53,10 +62,6 @@ Note: Trinity is memory-consuming, make sure you adapt the number of samples to 
 ### 5. Assembly
 
 Before running assembly, you need to make sure that the folder **05_trinity_assembly** is empty.
-
-```
-rm -r 05_trinity_assembly
-```
 You also need to adapt the script for your own needs. For instance, you will need to adapt the input files (either SE, PE or strand-specific) in the global variables section. Other parameters need also to be carefuly chosen (_e.g_: minimum length of transcripts, ...).
 
 ```
