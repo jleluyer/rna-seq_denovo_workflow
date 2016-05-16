@@ -8,6 +8,9 @@
 #$ -cwd
 #$ -S /bin/bash
 
+#Move to job submission directory
+cd $SGE_O_WORKDIR
+
 mkdir fastqc_dir
 for file in $(ls 02_data/.*f*q.gz|sed 's/.f(ast)?q.gz//g')
 do 
