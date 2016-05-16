@@ -30,4 +30,4 @@ out_pref="--out_prefix matrix"          #default: 'matrix'
 #run estimate to matrix
 00_scripts/trinity_utils/util/abundance_estimates_to_matrix.pl $meth $norm $name_dir \
          $base_dir $out_pref \
-         sample1.results sample2.results ... 
+         sample1.results sample2.results ... 2>&1 | tee 98_log_files/"$TIMESTAMP"_matrix.log
