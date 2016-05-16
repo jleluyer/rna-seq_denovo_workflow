@@ -2,52 +2,24 @@
 
 An integrated worklow for *de novo* analysis and DE gene assessment to conduct RNA-seq data analyses
 
+This Workflow is developped in [Louis Bernatchez' lab](https://www.bio.ulaval.ca/louisbernatchez/presentation.htm).
+
+**WARNING**
+
+The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+
+## Downloading
+
+You can clone this repository with:
+
+```
+git clone https://github.com/jleluyer/rna-seq_denovo_workflow
+````
+
 ## Documentation
 
-[**Documentation**](https://github.com/jleluyer/rNA-seq_denovo_mapping)
+The workflow documentation can be found in the MANUAL.html file in your downloaded RNA-seq _de novo_ workflow directory.
 
-## Citations
+## Licence
 
-Grabherr MG, Haas BJ, Yassour M, Levin JZ, Thompson DA, Amit I, Adiconis X, Fan L, Raychowdhury R, Zeng Q, Chen Z, Mauceli E, Hacohen N, Gnirke A, Rhind N, di Palma F, Birren BW, Nusbaum C, Lindblad-Toh K, Friedman N, Regev A. (2011). Full-length transcriptome assembly from RNA-seq data without a reference genome. **_Nat. Biotechnol._** [doi: 10.1038/nbt.1883](http://www.ncbi.nlm.nih.gov/pubmed/21572440)
-
-Haas BJ, Papanicolaou A, Yassour M, Grabherr M, Blood PD, Bowden J, Couger MB, Eccles D, Li B, Lieber M, Macmanes MD, Ott M, Orvis J, Pochet N, Strozzi F, Weeks N, Westerman R, William T, Dewey CN, Henschel R, Leduc RD, Friedman N, Regev A. (2013). De novo transcript sequence reconstruction from RNA-Seq: reference generation and analysis with Trinity. **_Nat. Protoc._** [doi:  10.1038/nprot.2013.084](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3875132/)
-
-## Dependencies
-
-### Softwares
-
-[Trinity](https://github.com/trinityrnaseq/trinityrnaseq)
-
-[Trinotate](https://github.com/Trinotate/Trinotate)
-
-[RSEM](https://github.com/deweylab/RSEM)
-
-[Bowtie](http://bowtie-bio.sourceforge.net/index.shtml)
-
-**java 1.7** or higher
-
-[R](https://www.r-project.org/)
-
-### R packages
-
-[edgeR](http://bioconductor.org/packages/release/bioc/html/edgeR.html)
-
-[DESeq2](http://bioconductor.org/packages/release/bioc/html/DESeq2.html)
-
-[limma/voom](http://bioconductor.org/packages/release/bioc/html/limma.html)
-
-[ROTS](http://www.btk.fi/research/research-groups/elo/software/rots/)
-
-[goseq](http://www.bioconductor.org/packages/release/bioc/html/goseq.html)
-
-```R
-source("http://bioconductor.org/biocLite.R")
-biocLite('edgeR')
-biocLite('limma')
-biocLite('DESeq2')
-biocLite('ctc')
-biocLite('Biobase')
-bioclite("goseq")
-install.packages('gplots')
-install.packages('ape')
-```
+The rna-seq_denovo_workflow is licensed under the GPL3 license. See the LICENCE file for more details.
