@@ -20,7 +20,7 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 
 #Global variables
-ADAPTERFILE="/path/to/file.fasta"
+ADAPTERFILE="01_info_files/univec.fasta"
 TRIMMOMATIC_JAR="/prg/trimmomatic/0.36/trimmomatic-0.36.jar"
 
 for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
