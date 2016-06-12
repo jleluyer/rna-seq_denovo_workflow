@@ -1,13 +1,4 @@
-#!/bin/bash
-#$ -N assembly_stats
-#$ -M userID
-#$ -m beas
-#$ -pe smp 1
-#$ -l h_vmem=20G
-#$ -l h_rt=20:00:00
-#$ -cwd
-#$ -S /bin/bash
-
+$outpref
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
 NAME=$(basename $0)
