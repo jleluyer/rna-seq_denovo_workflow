@@ -1,12 +1,17 @@
 #!/bin/bash
-#$ -N assembly
-#$ -M userID
-#$ -m beas
-#$ -pe smp 4
-#$ -l h_vmem=200G
-#$ -l h_rt=20:00:00
-#$ -cwd
-#$ -S /bin/bash
+
+#SBATCH -D ./ 
+#SBATCH --job-name="assemble"
+#SBATCH -o log-assemble.out
+#SBATCH -c 8
+#SBATCH -p ibis2
+#SBATCH -A ibis2
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=type_your_mail@ulaval.ca
+#SBATCH --time=10-00:00
+#SBATCH --mem=220000
+
+cd $SLURM_SUBMIT_DIR
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
@@ -15,12 +20,9 @@ LOG_FOLDER="98_log_files"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 #Global variables
-READSLEFT="04_merged/*left.fastq.gz"
-READSRIGHT="04_merged/*right.fastq.gz"
-READSSINGLE="03_trimmed/*.trimmed.fastq.gz"
-
-#move to present directory
-cd $SGE_O_WORKDIR
+READSLEFT="04_merged/all_left.fq"
+READSRIGHT="04_merged/all_right.fq"
+#READSSINGLE="03_trimmed/*.trimmed.fastq.gz"
 
 #Trinity variables
 ##Required
@@ -39,8 +41,8 @@ right="--right $READSRIGHT"    		#right reads, one or more file names (separated
                                   		# if paired: RF or FR,
                                    		#if single: F or R.   (dUTP method = RF)
                                    		#See web documentation.
-cpu="--CPU 4" 	                    		#number of CPUs to use, default: 2
-mincontiglength="--min_contig_length 200" 	#minimum assembled contig length to report
+cpu="--CPU 8" 	                    		#number of CPUs to use, default: 2
+mincontiglength="--min_contig_length 300" 	#minimum assembled contig length to report
                                    		#(def=200)
 #corlongread="--long_reads <string>"	        #fasta file containing error-corrected or circular consensus (CCS) pac bio reads
 #genomeguided="--genome_guided_bam <string>"     #genome guided mode, provide path to coordinate-sorted bam file.

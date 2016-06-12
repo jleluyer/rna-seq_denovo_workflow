@@ -3,11 +3,12 @@
 #SBATCH -D ./ 
 #SBATCH --job-name="trim"
 #SBATCH -o log-trim_pe.out
-#SBATCH -c 8
-#SBATCH -p ibismini
+#SBATCH -c 6
+#SBATCH -p ibis2
+#SBATCH -A ibis2
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=type_your_mail@ulaval.ca
-#SBATCH --time=0-20:00
+#SBATCH --time=2-00:00
 #SBATCH --mem=50000
 
 cd $SLURM_SUBMIT_DIR
@@ -23,13 +24,13 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 ADAPTERFILE="01_info_files/univec.fasta"
 TRIMMOMATIC_JAR="/prg/trimmomatic/0.36/trimmomatic-0.36.jar"
 
-for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
+for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_[12].fq.gz//')
 do
 	base=$(basename "$file")
 
 java -Xmx40G -jar $TRIMMOMATIC_JAR PE \
-        -phred33 \
-	-threads 8 \
+        -threads 6 \
+	-phred33 \
         02_data/"$base"_1.fq.gz \
         02_data/"$base"_2.fq.gz \
         03_trimmed/"$base"_R1.paired.fastq.gz \

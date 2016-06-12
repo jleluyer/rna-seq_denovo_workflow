@@ -1,5 +1,2 @@
-*.o9*
-*.e9*
-*.po9*
-*.pe9*
+*.out
 .Rhistory

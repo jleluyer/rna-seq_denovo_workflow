@@ -1,21 +1,23 @@
 #!/bin/bash
-#$ -N prep_ref
-#$ -M userID
-#$ -m beas
-#$ -pe smp 8
-#$ -l h_vmem=60G
-#$ -l h_rt=20:00:00
-#$ -cwd
-#$ -S /bin/bash
+
+#SBATCH -D ./ 
+#SBATCH --job-name="prep"
+#SBATCH -o log-prep.out
+#SBATCH -c 8
+#SBATCH -p ibis2
+#SBATCH -A ibis2
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=type_your_mail@ulaval.ca
+#SBATCH --time=01-00:00
+#SBATCH --mem=50000
+
+cd $SLURM_SUBMIT_DIR
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
 NAME=$(basename $0)
 LOG_FOLDER="98_log_files"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
-
-#Move to job submission directory
-cd $SGE_O_WORKDIR
 
 
 #Global variables
@@ -44,7 +46,7 @@ cpu="--thread_count 8"                  		#number of threads to use (default = 4
 trinmode="--trinity_mode" 	  	                #Setting --trinity_mode will automatically generate the gene_trans_map and use it.
 
 prepref="--prep_reference"	  	             	#prep reference (builds target index)
-#outpref="--output_prefix <string>"    			#prefix for output files.  Defaults to --est_method setting.
+outpref="--output_prefix refrsem"    			#prefix for output files.  Defaults to --est_method setting.
 
 ########################################
 #  Parameters for single-end reads:
@@ -54,8 +56,8 @@ prepref="--prep_reference"	  	             	#prep reference (builds target index
 ########################################
 #   bowtie-related parameters: (note, tool-specific settings are further below)
 
-maxins="--max_ins_size 800" 	 	     	   	#maximum insert size (bowtie -X parameter, default: 800)
-coord="--coordsort_bam"                  		#provide coord-sorted bam in addition to the default (unsorted) bam.
+#maxins="--max_ins_size 800" 	 	     	   	#maximum insert size (bowtie -X parameter, default: 800)
+#coord="--coordsort_bam"                  		#provide coord-sorted bam in addition to the default (unsorted) bam.
 ########################################
 #  RSEM opts:
 #bowtie_rsem="--bowtie_RSEM <string>" 		        #if using 'bowtie', default: "--all --best --strata -m 300 --chunkmbs 512"
@@ -78,7 +80,7 @@ coord="--coordsort_bam"                  		#provide coord-sorted bam in addition
 
 
 #run reference preparation
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode \ 
-	$prepref $outpref 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
+00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode $outpref $prepref $output 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
 
+#00_scripts/trinity_utils/util/align_and_estimate_abundance.pl --transcripts Trinity.fasta --est_method RSEM --aln_method bowtie --trinity_mode --prep_reference
 #note: Not all the commands have been integrated to data	

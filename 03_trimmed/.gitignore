@@ -6,3 +6,6 @@
 *single*
 *.gz
 *.zip
+*.sh
+*r1
+*r2

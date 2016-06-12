@@ -2,5 +2,8 @@
 *.txt
 *.fastq.gz
 *.gz
-trinity_utils
-trinotate_utils
+trinity_utils/
+trinotate_utils/
+transdecoder_utils/
+transrate_utils/
+transvestigator_utils/

@@ -1,19 +1,28 @@
 #!/bin/bash
 
+#SBATCH -D ./ 
+#SBATCH --job-name="merge"
+#SBATCH -o log-merge.out
+#SBATCH -c 1
+#SBATCH -p ibismini
+#SBATCH -A ibismini
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=type_your_mail@ulaval.ca
+#SBATCH --time=2-00:00
+#SBATCH --mem=10000
+
+cd $SLURM_SUBMIT_DIR
+
+TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
+SCRIPT=$0
+NAME=$(basename $0)
+LOG_FOLDER="98_log_files"
+cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
+
 INPUTFOLDER="03_trimmed"
 OUTPUTFOLDER="04_merged"
 
-#move to present directory
-
-cd $(pwd)
-
-for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_R[12].f(ast)?q.gz//')
-do
-	base=$(basename "$file")
-
-	cat "$INPUTFOLDER"/"$base"_R1.paired.fastq.gz > all_reads.left.fastq.gz
+	cat "$INPUTFOLDER"/*_R1.paired.fastq.gz >> "$OUTPUTFOLDER"/all_reads.left.fastq
  
-	cat "$INPUTFOLDER"/"$base"_R2.paired.fastq.gz > all_reads.left.fastq.gz
+	cat "$INPUTFOLDER"/*_R2.paired.fastq.gz >> "$OUTPUTFOLDER"/all_reads.right.fastq
 
-
-done  2>&1 | tee 98_log_files/"$TIMESTAMP"_mere.log        
