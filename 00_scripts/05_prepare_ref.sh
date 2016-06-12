@@ -49,7 +49,7 @@ cpu="--thread_count 8"                  		#number of threads to use (default = 4
 trinmode="--trinity_mode" 	  	                #Setting --trinity_mode will automatically generate the gene_trans_map and use it.
 
 prepref="--prep_reference"	  	             	#prep reference (builds target index)
-#outpref="--output_prefix <string>"    			#prefix for output files.  Defaults to --est_method setting.
+outpref="--output_prefix ref_bowtie"    			#prefix for output files.  Defaults to --est_method setting.
 
 ########################################
 #  Parameters for single-end reads:
@@ -83,6 +83,6 @@ prepref="--prep_reference"	  	             	#prep reference (builds target index
 
 
 #run reference preparation
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode :$outpref $prepref $outdir 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
+00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode $outpref $prepref $outdir 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
 
 #note: Not all the commands have been integrated to data	
