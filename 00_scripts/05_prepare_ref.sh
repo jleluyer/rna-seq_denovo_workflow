@@ -83,6 +83,6 @@ outpref="--output_prefix ref_bowtie"    			#prefix for output files.  Defaults t
 
 
 #run reference preparation
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode $outpref $prepref $outdir 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
+00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode $outpref $prepref $output 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
 
 #note: Not all the commands have been integrated to data	
