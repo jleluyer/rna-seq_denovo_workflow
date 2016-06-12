@@ -1,12 +1,17 @@
 #!/bin/bash
-#$ -N prep_ref
-#$ -M userID
-#$ -m beas
-#$ -pe smp 8
-#$ -l h_vmem=60G
-#$ -l h_rt=20:00:00
-#$ -cwd
-#$ -S /bin/bash
+
+#SBATCH -D ./ 
+#SBATCH --job-name="prep"
+#SBATCH -o log-prep.out
+#SBATCH -c 8
+#SBATCH -p ibismini
+#SBATCH -A ibismini
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=type_your_mail@ulaval.ca
+#SBATCH --time=01-00:00
+#SBATCH --mem=50000
+
+cd $SLURM_SUBMIT_DIR
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
@@ -54,8 +59,8 @@ prepref="--prep_reference"	  	             	#prep reference (builds target index
 ########################################
 #   bowtie-related parameters: (note, tool-specific settings are further below)
 
-maxins="--max_ins_size 800" 	 	     	   	#maximum insert size (bowtie -X parameter, default: 800)
-coord="--coordsort_bam"                  		#provide coord-sorted bam in addition to the default (unsorted) bam.
+#maxins="--max_ins_size 800" 	 	     	   	#maximum insert size (bowtie -X parameter, default: 800)
+#coord="--coordsort_bam"                  		#provide coord-sorted bam in addition to the default (unsorted) bam.
 ########################################
 #  RSEM opts:
 #bowtie_rsem="--bowtie_RSEM <string>" 		        #if using 'bowtie', default: "--all --best --strata -m 300 --chunkmbs 512"
@@ -78,7 +83,6 @@ coord="--coordsort_bam"                  		#provide coord-sorted bam in addition
 
 
 #run reference preparation
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode \ 
-	$prepref $outpref 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
+00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $meth $alnmeth $trinmode :$outpref $prepref $outdir 2>&1 | tee 98_log_files/"$TIMESTAMP"_prepref.log
 
 #note: Not all the commands have been integrated to data	
