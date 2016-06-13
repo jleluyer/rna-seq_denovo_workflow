@@ -19,4 +19,5 @@ git clone https://github.com/genomeannotation/transvestigator 00_scripts/transve
 git clone https://github.com/blahah/transrate 00_scripts/transrate_utils
 
 #clone corset
-git clone https://github.com/Oshlack/Corset
+git clone https://github.com/Oshlack/Corset 00_scripts/corset_utils
+
