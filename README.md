@@ -40,6 +40,16 @@ make plugins
 cd ../..
 ```
 
+For Corset, small changes need to be done to correctly confgure and install the software. Change **userNAME** for your username.
+
+```
+cd 00-scripts/corset_utils
+./configure --with-bam_inc=/prg/samtools/0.1.19/ --with-bam_lib=/prg/samtools/0.1.19/ --prefix=/home/userNAME/local
+make
+make install
+cd ../..
+```
+
 Make sure **Bowtie** is in your **$PATH**.
 
 ### 3. Import data
