@@ -11,6 +11,7 @@
 #SBATCH --time=2-00:00
 #SBATCH --mem=10000
 
+<<<<<<< HEAD
 cd $SLURM_SUBMIT_DIR
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
@@ -26,3 +27,12 @@ OUTPUTFOLDER="04_merged"
  
 	cat "$INPUTFOLDER"/*_R2.paired.fastq.gz >> "$OUTPUTFOLDER"/all_reads.right.fastq
 
+=======
+#move to present directory
+cd $(pwd)
+
+#cat all reads
+	cat "$INPUTFOLDER"/*_R1.paired.fastq.gz > "$OUTPUTFOLDER"/all_reads.left.fastq.gz
+ 
+	cat "$INPUTFOLDER"/*_R2.paired.fastq.gz > "$OUTPUTFOLDER"/all_reads.right.fastq.gz
+>>>>>>> 8629e02ffad09c4df82ffb278128308c999cbded

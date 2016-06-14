@@ -4,8 +4,13 @@
 #SBATCH --job-name="prep"
 #SBATCH -o log-prep.out
 #SBATCH -c 8
+<<<<<<< HEAD
 #SBATCH -p ibis2
 #SBATCH -A ibis2
+=======
+#SBATCH -p ibismini
+#SBATCH -A ibismini
+>>>>>>> 8629e02ffad09c4df82ffb278128308c999cbded
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=type_your_mail@ulaval.ca
 #SBATCH --time=01-00:00
@@ -46,7 +51,11 @@ cpu="--thread_count 8"                  		#number of threads to use (default = 4
 trinmode="--trinity_mode" 	  	                #Setting --trinity_mode will automatically generate the gene_trans_map and use it.
 
 prepref="--prep_reference"	  	             	#prep reference (builds target index)
+<<<<<<< HEAD
 outpref="--output_prefix refrsem"    			#prefix for output files.  Defaults to --est_method setting.
+=======
+outpref="--output_prefix ref_bowtie"    			#prefix for output files.  Defaults to --est_method setting.
+>>>>>>> 8629e02ffad09c4df82ffb278128308c999cbded
 
 ########################################
 #  Parameters for single-end reads:

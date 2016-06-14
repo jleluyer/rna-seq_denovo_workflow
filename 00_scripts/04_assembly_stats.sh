@@ -2,6 +2,7 @@
 
 #SBATCH -D ./ 
 #SBATCH --job-name="stats"
+<<<<<<< HEAD
 #SBATCH -o log-stat.out
 #SBATCH -c 1
 #SBATCH -p ibis2
@@ -13,6 +14,18 @@
 
 cd $SLURM_SUBMIT_DIR
 
+=======
+#SBATCH -o log-stats.out
+#SBATCH -c 1
+#SBATCH -p ibismini
+#SBATCH -A ibismini
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=type_your_mail@ulaval.ca
+#SBATCH --time=00-20:00
+#SBATCH --mem=8000
+
+cd $SLURM_SUBMIT_DIR
+>>>>>>> 8629e02ffad09c4df82ffb278128308c999cbded
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0

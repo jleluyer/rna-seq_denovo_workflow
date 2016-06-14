@@ -1,12 +1,17 @@
 #!/bin/bash
-#$ -N aboudance_stats
-#$ -M userID
-#$ -m beas
-#$ -pe smp 8
-#$ -l h_vmem=60G
-#$ -l h_rt=20:00:00
-#$ -cwd
-#$ -S /bin/bash
+
+#SBATCH -D ./ 
+#SBATCH --job-name="trans_abundance"
+#SBATCH -o log-trans_abundance.out
+#SBATCH -c 8
+#SBATCH -p ibismini
+#SBATCH -A ibismini
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=type_your_mail@ulaval.ca
+#SBATCH --time=10-00:00
+#SBATCH --mem=60000
+
+cd $SLURM_SUBMIT_DIR
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
@@ -14,10 +19,8 @@ NAME=$(basename $0)
 LOG_FOLDER="98_log_files"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
-#Move to job submission directory
-cd $SGE_O_WORKDIR
 
-for file in $(ls 03_trimmed/*.paired.f*q.gz|perl -pe 's/_R[12].fastq.gz//')
+for file in $(ls 03_trimmed/*.paired.f*q.gz|perl -pe 's/_R[12].paired.fastq.gz//')
 
 do
 	sample=$(basename "$file")
@@ -57,8 +60,8 @@ cpu="--thread_count 8"                  		#number of threads to use (default = 4
 #     or  
 trinmode="--trinity_mode" 	  	                #Setting --trinity_mode will automatically generate the gene_trans_map and use it.
 
-prepref="--prep_reference"	  	             	#prep reference (builds target index)
-outpref="--output_prefix "$sample""    			#prefix for output files.  Defaults to --est_method setting.
+#prepref="--prep_reference"	  	             	#prep reference (builds target index)
+outpref="--output_prefix rsem_"$sample""    			#prefix for output files.  Defaults to --est_method setting.
 
 ########################################
 #  Parameters for single-end reads:
@@ -68,8 +71,8 @@ outpref="--output_prefix "$sample""    			#prefix for output files.  Defaults to
 ########################################
 #   bowtie-related parameters: (note, tool-specific settings are further below)
 
-maxins="--max_ins_size 800" 	 	     	   	#maximum insert size (bowtie -X parameter, default: 800)
-coord="--coordsort_bam"                  		#provide coord-sorted bam in addition to the default (unsorted) bam.
+#maxins="--max_ins_size 800" 	 	     	   	#maximum insert size (bowtie -X parameter, default: 800)
+#coord="--coordsort_bam"                  		#provide coord-sorted bam in addition to the default (unsorted) bam.
 ########################################
 #  RSEM opts:
 #bowtie_rsem="--bowtie_RSEM <string>" 		        #if using 'bowtie', default: "--all --best --strata -m 300 --chunkmbs 512"
@@ -92,10 +95,8 @@ coord="--coordsort_bam"                  		#provide coord-sorted bam in addition
 
 
 #Align
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $seq $single $left $right \
-	$meth $output $trinmode \
-	$alnmeth $strand $cpu $outpref \
-	$maxins $coord $bowtie_rsem $bowtie2_rsem \
-	$include_rsem_bam $rsem_opt
+00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $seq $single $left $right $meth $output $trinmode $alnmeth $strand $cpu $outpref $maxins $coord $bowtie_rsem $bowtie2_rsem $include_rsem_bam $rsem_opt 
+
+
 done 2>&1 | tee 98_log_files/"$TIMESTAMP"_align.log
 #note: Not all the commands have been integrated to data	

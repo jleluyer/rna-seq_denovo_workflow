@@ -42,7 +42,7 @@ right="--right $READSRIGHT"    		#right reads, one or more file names (separated
                                    		#if single: F or R.   (dUTP method = RF)
                                    		#See web documentation.
 cpu="--CPU 8" 	                    		#number of CPUs to use, default: 2
-mincontiglength="--min_contig_length 300" 	#minimum assembled contig length to report
+mincontiglength="--min_contig_length 200" 	#minimum assembled contig length to report
                                    		#(def=200)
 #corlongread="--long_reads <string>"	        #fasta file containing error-corrected or circular consensus (CCS) pac bio reads
 #genomeguided="--genome_guided_bam <string>"     #genome guided mode, provide path to coordinate-sorted bam file.
@@ -60,7 +60,7 @@ mincontiglength="--min_contig_length 300" 	#minimum assembled contig length to r
 #normalize="--normalize_reads"               	#run in silico normalization of reads. Defaults to max. read coverage of 50.
                                        		#see '--normalize_max_read_cov' under full usage info for tailored settings.
 #notphase2="--no_distributed_trinity_exec"   	#do not run Trinity phase 2 (assembly of partitioned reads), and stop after generating command list.
-output="--output 05_trinity_assembly/"              	#name of directory for output (will be
+output="--output 05_trinity_assembly_200/"              	#name of directory for output (will be
                                    		#created if it doesn't already exist)
                                    		#default( your current working directory: "/home/leluyer/trinity_out_dir" 
                                     		#note: must include 'trinity' in the name as a safety precaution! )
