@@ -2,3 +2,4 @@
 *.results
 *.bam
 *stat/
+*.outfmt6
