@@ -8,13 +8,8 @@
 #SBATCH -A ibismini
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=type_your_mail@ulaval.ca
-<<<<<<< HEAD
-#SBATCH --time=10-00:00
-#SBATCH --mem=60000
-=======
 #SBATCH --time=02-00:00
 #SBATCH --mem=50000
->>>>>>> 1d41e07a92e538202b4a90d8086b1f93904dfc1e
 
 cd $SLURM_SUBMIT_DIR
 
@@ -66,11 +61,8 @@ cpu="--thread_count 8"                  		#number of threads to use (default = 4
 trinmode="--trinity_mode" 	  	                #Setting --trinity_mode will automatically generate the gene_trans_map and use it.
 
 #prepref="--prep_reference"	  	             	#prep reference (builds target index)
-<<<<<<< HEAD
 outpref="--output_prefix rsem_"$sample""    			#prefix for output files.  Defaults to --est_method setting.
-=======
 #outpref="--output_prefix "$sample""    			#prefix for output files.  Defaults to --est_method setting.
->>>>>>> 1d41e07a92e538202b4a90d8086b1f93904dfc1e
 
 ########################################
 #  Parameters for single-end reads:
@@ -104,12 +96,8 @@ outpref="--output_prefix rsem_"$sample""    			#prefix for output files.  Defaul
 
 
 #Align
-<<<<<<< HEAD
 00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $seq $single $left $right $meth $output $trinmode $alnmeth $strand $cpu $outpref $maxins $coord $bowtie_rsem $bowtie2_rsem $include_rsem_bam $rsem_opt 
 
-=======
-00_scripts/trinity_utils/util/align_and_estimate_abundance.pl $trans $seq $single $left $right $meth $output $trinmode $alnmeth $strand $cpu $outpref $maxins $coord $bowtie_rsem $bowtie2_rsem $include_rsem_bam $rsem_opt
->>>>>>> 1d41e07a92e538202b4a90d8086b1f93904dfc1e
 
 done 2>&1 | tee 98_log_files/"$TIMESTAMP"_align.log
 #note: Not all the commands have been integrated to data	
