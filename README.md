@@ -31,12 +31,18 @@ cd rna-seq_denovo_workflow
 
 ./00_scripts/00_import_trinity.sh
 ```
-This script will create two directories **00_scripts/trinity_utils** and **00_scripts/trinotate_utils**
+This script will create the utilities directories that have to be configured and installed
 
 ```
 cd 00_scripts/trinity_utils/
 make
 make plugins
+cd ../..
+```
+
+```
+cd 00_scripts/transdecoder_utils/
+make
 cd ../..
 ```
 
