@@ -78,7 +78,7 @@ Add your specific adaptors if absent in the database.
 Two scripts are provided for **Single-End** or **Paired-end** data, **00_scripts/01_trimmomatic_se.sh** and **00_scripts/01_trimmomatic_pe.sh**, respectively.
 
 ```
-qsub 00_scripts/01_trimmomatic_se.sh
+sbatch 00_scripts/01_trimmomatic_se.sh
 ```
 
 You may also want to check the quality of your data prior to trimming using **00_scripts/utility_scripts/fastq.sh**. This will require to have **fastQC** installed in your **$PATH**.
@@ -88,7 +88,7 @@ You may also want to check the quality of your data prior to trimming using **00
 Note: Trinity is memory-consuming, make sure you adapt the number of samples to the memory available. When limited in memory, you could use a in silico normalization provided in the **00_scripts/utility_scripts/insilico_normalization.sh**. Otherwise, you may want to select a subset of the data and modify **./00_scripts/02_merge.sh**. For more information regarding memory usage, please visit [Trinity memory usage](http://trinityrnaseq.github.io/performance/mem.html) 
 
 ```
-./00_scripts/02_merge.sh
+sbatch 00_scripts/02_merge.sh
 ```
 
 ### 5. Assembly
@@ -97,13 +97,13 @@ Before running assembly, you need to make sure that the folder **05_trinity_asse
 You also need to adapt the script for your own needs. For instance, you will need to adapt the input files (either SE, PE or strand-specific) in the global variables section. Other parameters need also to be carefuly chosen (_e.g_: minimum length of transcripts, ...).
 
 ```
-qsub 00_scripts/03_assemble.sh
+sbatch 00_scripts/03_assemble.sh
 ```
 
 ### 6. Check assembly quality
 
 ```
-./00_scripts/04_assembly_stats.sh
+sbatch 00_scripts/04_assembly_stats.sh
 ```
 This script will output file **06_assembly_stats/results_stats.txt**
 
@@ -118,13 +118,13 @@ Other scripts are provided to assess the quality of the transcriptome:
 * Prepare reference
 
 ```
-qsub 00_scripts/05_prep_ref.sh
+sbatch 00_scripts/05_prep_ref.sh
 ```
 
 * Quantify transcripts abundance
 
 ```
-qsub 00_scripts/06_transcripts_abundance.sh
+sbatch 00_scripts/06_transcripts_abundance.sh
 ```
 
 Several options are possible ase well as severel tools for quantifying trasncripts aboundance such as **RSEM**, **Kallisto**, **eXpress** or **salmon** as well as different aligners **Bowtie** or **Bowtie2**
