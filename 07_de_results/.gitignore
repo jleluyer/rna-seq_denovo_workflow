@@ -3,3 +3,4 @@
 *.bam
 *stat/
 *.outfmt6
+*temp/
