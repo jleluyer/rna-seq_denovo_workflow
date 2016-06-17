@@ -129,20 +129,82 @@ sbatch 00_scripts/06_transcripts_abundance.sh
 
 Several options are possible ase well as severel tools for quantifying trasncripts aboundance such as **RSEM**, **Kallisto**, **eXpress** or **salmon** as well as different aligners **Bowtie** or **Bowtie2**
 
+* Cluster transcripts
+
+```
+sbatch 00_scripts/utilities/corset.sh
+```
+
+### 7.2 Differential expression
+
 * Build transcripts expression matrices
 
 ```
-qsub 00_scripts/07_matrix.sh
+sbatch 00_scripts/07_matrix.sh
 ```
 
 
 #### 7.2 Differential expression analysis
 
 ```
-qsub 00_scripts/08_de_analysis.sh
+sbatch 00_scripts/08_de_analysis.sh
 ```
 
 Several packages are available and implemented in the script such as **DeSeq2**, **Lima/voom**, **EdgeR** and **ROTS**.
+
+
+### 7.2 Annotation
+
+* Predict longest ORFs
+
+```
+sbatch 00_scripts/utility_scripts/transdecoder_getorfs.sh
+```
+
+* Blast against Uniprot
+
+```
+sbatch 00_scripts/utility_scripts/blastp.sh
+```
+_note: you will need access to **uniprot_sprot.fasta** database_
+
+
+* Identify protein families
+
+```
+sbatch 00_scripts/utility_scripts/pfam.sh
+```
+_note: you will need access to **Pfam-A** database_
+
+
+* Identify signal peptides
+
+```
+sbatch 00_scripts/utility_scripts/signalip.sh
+```
+_need to install signalip_
+
+* Identify transmembrane regions
+
+```
+sbatch 00_scripts/utility_scripts/tmhmm.sh
+```
+_need to install tmhmm_
+
+* Identify rRNA transcripts
+
+```
+sbatch 00_scripts/utility_scripts/rnammer.sh
+```
+_need to install rnammer_
+
+* Compile the annotation in a final report
+
+```
+sbatch 00_scripts/utility_scripts/trianotate.sh
+```
+
+_note: you will need access to **Trinotate.sqlite** database_
 
 ## Notes
 
