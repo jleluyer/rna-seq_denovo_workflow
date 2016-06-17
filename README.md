@@ -135,24 +135,6 @@ Several options are possible ase well as severel tools for quantifying trasncrip
 sbatch 00_scripts/utilities/corset.sh
 ```
 
-### 7.2 Differential expression
-
-* Build transcripts expression matrices
-
-```
-sbatch 00_scripts/07_matrix.sh
-```
-
-
-#### 7.2 Differential expression analysis
-
-```
-sbatch 00_scripts/08_de_analysis.sh
-```
-
-Several packages are available and implemented in the script such as **DeSeq2**, **Lima/voom**, **EdgeR** and **ROTS**.
-
-
 ### 7.2 Annotation
 
 * Predict longest ORFs
@@ -205,6 +187,23 @@ sbatch 00_scripts/utility_scripts/trianotate.sh
 ```
 
 _note: you will need access to **Trinotate.sqlite** database_
+
+
+### 7.3 Differential expression analysis
+
+
+* Build transcripts expression matrices
+
+```
+sbatch 00_scripts/07_matrix.sh
+```
+* running DE
+```
+sbatch 00_scripts/08_de_analysis.sh
+```
+
+Several packages are available and implemented in the script such as **DeSeq2**, **Lima/voom**, **EdgeR** and **ROTS**.
+
 
 ## Notes
 
