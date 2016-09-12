@@ -31,5 +31,4 @@ out_pref="--out_prefix matrix"          #default: 'matrix'
 listfile="--samples_file 01_info_files/list.results.txt" 	#rsem results
 #run estimate to matrix
 00_scripts/trinity_utils/util/abundance_estimates_to_matrix.pl $meth $norm \
-         $name_dir $base_dir $out_pref $listfile \
-         sample1.results sample2.results ... 2>&1 | tee 98_log_files/"$TIMESTAMP"_matrix.log
+         $name_dir $base_dir $out_pref $listfile 2>&1 | tee 98_log_files/"$TIMESTAMP"_matrix.log
