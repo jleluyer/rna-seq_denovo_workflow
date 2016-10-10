@@ -14,7 +14,10 @@ You can clone this repository with:
 
 ```
 git clone https://github.com/jleluyer/rna-seq_denovo_workflow
-````
+```
+```R
+datatable
+```
 
 ## Documentation
 
