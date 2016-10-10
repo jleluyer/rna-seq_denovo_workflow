@@ -15,9 +15,6 @@ You can clone this repository with:
 ```
 git clone https://github.com/jleluyer/rna-seq_denovo_workflow
 ```
-```R
-datatable
-```
 
 ## Documentation
 
@@ -240,7 +237,7 @@ Several packages are available and implemented in the script such as **DeSeq2**,
 
 #### Install R packages
 
-```
+```R
 %R
 source("http://bioconductor.org/biocLite.R")
 biocLite('edgeR')
