@@ -4,8 +4,8 @@
 #SBATCH --job-name="prep"
 #SBATCH -o log-prep.out
 #SBATCH -c 8
-#SBATCH -p ibis2
-#SBATCH -A ibis2
+#SBATCH -p ibismax
+#SBATCH -A ibismax
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=type_your_mail@ulaval.ca
 #SBATCH --time=01-00:00
@@ -21,7 +21,7 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 
 #Global variables
-TRANSCRIPTOME="05_trinity_assembly/Trinity.fasta"
+TRANSCRIPTOME="05_trinity_assembly/Trinity.filtered.fasta"
 
 #########################################################################
 #Required

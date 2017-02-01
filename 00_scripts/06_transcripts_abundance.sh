@@ -4,8 +4,8 @@
 #SBATCH --job-name="trans_abundance"
 #SBATCH -o log-trans_abundance.out
 #SBATCH -c 8
-#SBATCH -p ibis2
-#SBATCH -A ibis2
+#SBATCH -p ibismax
+#SBATCH -A ibismax
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=type_your_mail@ulaval.ca
 #SBATCH --time=02-00:00
@@ -20,15 +20,15 @@ LOG_FOLDER="98_log_files"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 
-for file in $(ls ../01_rnaseq_denovo_2016-06-10/03_trimmed/*.paired.f*q.gz|perl -pe 's/_R[12].paired.fastq.gz//')
+for file in $(ls 03_trimmed/*.paired.f*q.gz|perl -pe 's/_R[12].paired.fastq.gz//')
 
 do
 	sample=$(basename "$file")
 
 #Global variables
-TRANSCRIPTOME="05_trinity_assembly/Trinity.fasta"
-READSLEFT="../01_rnaseq_denovo_2016-06-10/03_trimmed/"$sample"_R1.paired.fastq.gz"
-READSRIGHT="../01_rnaseq_denovo_2016-06-10/03_trimmed/"$sample"_R2.paired.fastq.gz"
+TRANSCRIPTOME="05_trinity_assembly/Trinity.filtered.fasta"
+READSLEFT="03_trimmed/"$sample"_R1.paired.fastq.gz"
+READSRIGHT="03_trimmed/"$sample"_R2.paired.fastq.gz"
 #READSSINGLE="03_trimmed/*_R1.trimmed.fastq.gz"
 
 #########################################################################
