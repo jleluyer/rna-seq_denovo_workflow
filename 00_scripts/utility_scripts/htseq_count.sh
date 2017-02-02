@@ -28,9 +28,9 @@ GFF_FILE="transcriptome.gff3"
 
 
 #sort bam files
-for i in $(ls 07_de_results/*.bam|sed 's/.bam//g')
+for i in $(ls 07_de_results/*.bam|sed 's/.bam//g'|sort -u)
 do
-samtools sort "$i".bam "$i".sorted.bam
+#samtools sort "$i".bam "$i".sorted
 samtools index "$i".sorted.bam
 done
 
