@@ -2,7 +2,7 @@
 
 #SBATCH -D ./ 
 #SBATCH --job-name="htseq"
-#SBATCH -o log-hetseq.out
+#SBATCH -o log-htseq.out
 #SBATCH -c 1
 #SBATCH -p ibismax
 #SBATCH -A ibismax
@@ -28,17 +28,17 @@ GFF_FILE="transcriptome.gff3"
 
 
 #sort bam files
-#for i in $(ls 07_de_results/*.bam|sed 's/.bam//g'|sort -u)
-#do
-#samtools sort "$i".bam "$i".sorted
-#samtools index "$i".sorted.bam
-#done
+for i in $(ls 07_de_results/*.bam|sed 's/.bam//g'|sort -u)
+do
+samtools sort "$i".bam "$i".sorted
+samtools index "$i".sorted.bam
+done
 
 #create gff3 file
 # import function
-#git clone https://github.com/scottcain/chado_test
+git clone https://github.com/scottcain/chado_test
 
-#chado_test/chado/bin/gmod_fasta2gff3.pl --fasta_dir  05_trinity_assembly/Trinity.filtered.fasta --gfffilename 01_info_files/transcriptome.gff3 --nosequence 
+chado_test/chado/bin/gmod_fasta2gff3.pl --fasta_dir  05_trinity_assembly/Trinity.filtered.fasta --gfffilename 01_info_files/transcriptome.gff3 --nosequence 
 
 
 # launch htseqcount
