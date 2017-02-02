@@ -28,17 +28,17 @@ GFF_FILE="transcriptome.gff3"
 
 
 #sort bam files
-for i in $(ls 07_de_results/*.bam|sed 's/.bam//g'|sort -u)
-do
+#for i in $(ls 07_de_results/*.bam|sed 's/.bam//g'|sort -u)
+#do
 #samtools sort "$i".bam "$i".sorted
-samtools index "$i".sorted.bam
-done
+#samtools index "$i".sorted.bam
+#done
 
 #create gff3 file
 # import function
 #git clone https://github.com/scottcain/chado_test
 
-chado_test/chado/bin/gmod_fasta2gff3.pl --fasta_dir  05_trinity_assembly/Trinity.filtered.fasta --gfffilename 01_info_files/transcriptome.gff3 --nosequence 
+#chado_test/chado/bin/gmod_fasta2gff3.pl --fasta_dir  05_trinity_assembly/Trinity.filtered.fasta --gfffilename 01_info_files/transcriptome.gff3 --nosequence 
 
 
 # launch htseqcount
@@ -46,6 +46,6 @@ for i in $(ls 07_de_results/*sorted.bam)
 do
 base="$(basename $i)"
 
-htseq-count -f bam -s no -t EST -r pos -i EST "$DATAINPUT"/"$base" "$GFF_FOLDER"/"$GFF_FILE" >> "$DATAOUTPUT"/htseq-count_"$base".txt
+htseq-count -f bam -s no -t CDS -r pos "$DATAINPUT"/"$base" "$GFF_FOLDER"/"$GFF_FILE" >> "$DATAOUTPUT"/htseq-count_"$base".txt
 
 done 2>&1 | tee 98_log_files/"$TIMESTAMP"_htseq.log
