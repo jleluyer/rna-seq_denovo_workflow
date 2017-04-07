@@ -1,17 +1,15 @@
 #!/bin/bash
+#PBS -N trimmomatic__BASE__
+#PBS -o trimmomatic__BASE__.out
+#PBS -l walltime=02:00:00
+#PBS -l mem=60g
+#####PBS -m ea 
+#PBS -l ncpus=8
+#PBS -q omp
+#PBS -r n
 
-#SBATCH -D ./ 
-#SBATCH --job-name="trim"
-#SBATCH -o log-trim_pe.out
-#SBATCH -c 6
-#SBATCH -p ibis2
-#SBATCH -A ibis2
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=type_your_mail@ulaval.ca
-#SBATCH --time=2-00:00
-#SBATCH --mem=50000
+cd $PBS_O_WORKDIR
 
-cd $SLURM_SUBMIT_DIR
 
 TIMESTAMP=$(date +%Y-%m-%d_%Hh%Mm%Ss)
 SCRIPT=$0
@@ -20,19 +18,18 @@ LOG_FOLDER="98_log_files"
 cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 
-#global variables
-ADAPTERFILE="01_info_files/univec.fasta"
-TRIMMOMATIC_JAR="/prg/trimmomatic/0.36/trimmomatic-0.36.jar"
+# Global variables
 
-for file in $(ls 02_data/*.f*q.gz|perl -pe 's/_[12].fq.gz//')
-do
-	base=$(basename "$file")
+ADAPTERFILE="/home1/datawork/jleluyer/00_ressources/univec/univec.fasta"
+NCPU=8
+base=__BASE__
+TRIMMOMATIC_JAR="/datawork/fsi1/bioinfo/home12-copycaparmor/softs/sources/trimmomatic/Trimmomatic-0.36/trimmomatic-0.36.jar"
 
 java -Xmx40G -jar $TRIMMOMATIC_JAR PE \
-        -threads 6 \
+	-threads 8 \
 	-phred33 \
-        02_data/"$base"_1.fq.gz \
-        02_data/"$base"_2.fq.gz \
+        02_data/"$base"_1.fastq.gz \
+        02_data/"$base"_2.fastq.gz \
         03_trimmed/"$base"_R1.paired.fastq.gz \
         03_trimmed/"$base"_R1.single.fastq.gz \
         03_trimmed/"$base"_R2.paired.fastq.gz \
@@ -41,6 +38,4 @@ java -Xmx40G -jar $TRIMMOMATIC_JAR PE \
         LEADING:20 \
         TRAILING:20 \
         SLIDINGWINDOW:30:30 \
-        MINLEN:60
- 
-done 2>&1 | tee 98_log_files/"$TIMESTAMP"_trimmomatic_pe.log       
+        MINLEN:40 2> 98_log_files/log.trimmomatic.pe."$TIMESTAMP"      
