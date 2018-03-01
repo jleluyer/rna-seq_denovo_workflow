@@ -20,10 +20,10 @@ cp $SCRIPT $LOG_FOLDER/"$TIMESTAMP"_"$NAME"
 
 # Global variables
 
-ADAPTERFILE="/home1/datawork/jleluyer/00_ressources/univec/univec.fasta"
+ADAPTERFILE="univec.fasta"
 NCPU=8
 base=__BASE__
-TRIMMOMATIC_JAR="/datawork/fsi1/bioinfo/home12-copycaparmor/softs/sources/trimmomatic/Trimmomatic-0.36/trimmomatic-0.36.jar"
+TRIMMOMATIC_JAR="trimmomatic-0.36.jar"
 
 java -Xmx40G -jar $TRIMMOMATIC_JAR PE \
 	-threads 8 \
